@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="test" namespace="/" extends="struts-default">
+	
+		<action name="login" method="execute" class="action.LoginAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">InitAction</param>
+			</result>
+			<result name="error">/error.jsp</result>
+			<result name="error1">/error1.jsp</result>
+		</action>
+		<action name="code" method="execute" class="action.codeAction">
+		<result name="success" type="stream">
+			<param name="contentType">image/jpeg</param>
+			<param name="inputName">inputStream</param>
+		</result>
+		</action>
+		<action name="InitAction" method="execute" class="action.InitAction">
+			<result>/showAllBook.jsp</result>
+		</action>
+		<action name="AddAction" method="execute" class="action.AddAction">
+			<result>/showCart.jsp</result>
+		</action>
+		<action name="RemoveAction" method="execute" class="action.RemoveAction">
+			<result>/showCart.jsp</result>
+		</action>
+		<action name="logout" method="execute" class="action.LogoutAction">
+			<result>/login.jsp</result>
+		</action>
+	</package>
+</struts>    
