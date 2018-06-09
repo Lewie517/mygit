@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'error1.jsp' starting page</title>
+    <title>My JSP 'register.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,7 +23,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    	验证码错误，请重新输入！ 3秒后跳转。。。<br>
-    	<%response.setHeader("refresh","3;URL=login.jsp"); %>
+      <form action="register.action" method="post" >
+      	<h1 align="center">注册</h1>
+      	<input type="text" name="username" placeholder="用户名" value="" ><br>
+      	<input type="password" name="password" placeholder="密码" value="" ><br>
+      	<input type="text" name="address" placeholder="地址"><br>
+      	<input type="text" name="phone" placeholder="电话号码"><br>
+      	<input type="submit" value="提交">
+      	
+      </form>
   </body>
 </html>

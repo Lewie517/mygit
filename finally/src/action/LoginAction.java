@@ -25,9 +25,9 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>{
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}//?useUnicode=true&characterEncoding=utf-8&useSSL=false
-		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/jdbc","root","wwwNBA004");
-		String sql = " select * from login " + " where username= ? and password= ? ";
+		}//
+		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/bookstore?useUnicode=true&characterEncoding=utf-8&useSSL=false","root","wwwNBA004");
+		String sql = " select username,password from user " + " where username= ? and password= ? ";
 		PreparedStatement psm = (PreparedStatement) con.prepareStatement(sql);
 		psm.setString(1, user.getUsername());
 		psm.setString(2, user.getPassword());
