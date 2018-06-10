@@ -14,6 +14,7 @@ public class SessionListener implements HttpSessionListener {
 		HashMap<Integer,String> books = new HashMap<Integer,String>();
 		session.setAttribute("books", books);
 		session.setAttribute("money", 0F);
+		//String sessionid = session.getId();
 	}
 
 	@Override

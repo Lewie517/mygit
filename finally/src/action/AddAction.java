@@ -34,9 +34,7 @@ public class AddAction extends ActionSupport {
 		book.setBooknumber(booknumber);
 		books.put(bookno,book);
 		float money = (Float) session.getAttribute("money");
-		System.out.println("1£º"+money);
 		money = money + bookprice * booknumber;
-		System.out.println("2£º"+money);
 		session.setAttribute("money",money);
 		
 		return SUCCESS;

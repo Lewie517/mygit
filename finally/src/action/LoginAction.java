@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -41,6 +42,8 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>{
 				if(rs.getString("username").equals(user.getUsername())&&rs.getString("password").equals(user.getPassword())){
 					if(servercode.equals(checkcode))
 					{
+						HttpSession session = request.getSession();
+						session.setAttribute("username", user.getUsername());
 						return SUCCESS;
 					}
 					else
