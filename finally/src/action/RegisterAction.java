@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import dao.CartDao;
 import dao.DBUtil;
 import dao.UserDao;
 
@@ -33,6 +34,12 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User>{
 			}
 		}
 		UserDao.addUser(user);
+		//Ìí¼Ócartid
+		PreparedStatement psm1 = con.prepareStatement(" SELECT id FROM user WHERE username=? ");
+		psm1.setString(1, user.getUsername());
+		ResultSet rs1 = psm1.executeQuery();
+		int userid = rs1.getInt(1);
+		CartDao.addCart(userid);
 		return SUCCESS;
 		
 		
