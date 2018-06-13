@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import dao.CartDao;
+import dao.DBUtil;
 import dao.GoodsDao;
 import vo.Book;
 import vo.User;
@@ -47,11 +49,12 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>{
 					if(servercode.equals(checkcode))
 					{
 						HttpSession session = request.getSession();
-						session.setAttribute("username", user.getUsername());
+						session.setAttribute("user", user);
 						//取出books放入session中//取出userid对应的cartid
-						int cartid = CartDao.queryCartId(user.getId());
+						int cartid = CartDao.queryCartId(queryID());
 						HashMap<Integer, Book> books = GoodsDao.queryGoods(cartid);
 						session.setAttribute("books", books);
+						GoodsDao.deleteGoods(cartid);
 						return SUCCESS;
 					}
 					else
@@ -69,6 +72,19 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>{
 		return user;
 	}
 	
-	
+	public int queryID() throws SQLException{
+		
+		Connection con = DBUtil.getConnection();
+		String sql = " SELECT * FROM user WHERE username=? ";
+		PreparedStatement psm = con.prepareStatement(sql);
+		psm.setString(1, user.getUsername());
+		ResultSet rs = psm.executeQuery();
+		int userid ;
+		while(rs.next()){
+			userid = rs.getInt("id");
+			user.setId(userid);
+		}
+		return user.getId();
+	}
 	
 }

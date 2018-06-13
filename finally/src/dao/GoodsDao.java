@@ -53,20 +53,34 @@ public class GoodsDao {
 	
 	public static HashMap<Integer, Book> queryGoods(int cartid) throws Exception{
 		HashMap<Integer, Book> books = new HashMap<Integer, Book>();
+		HttpSession session = ServletActionContext.getRequest().getSession();
 		Connection con = DBUtil.getConnection();
-		String sql = " SELECT * FROM goods WHERE cartid=? ";
+		String sql = " SELECT * FROM goods WHERE cartid="+cartid;
 		PreparedStatement psm = con.prepareStatement(sql);
+		//psm.setInt(1, cartid);
 		ResultSet rs = psm.executeQuery(sql);
+		float money = (Float) session.getAttribute("money");
 		while (rs.next()) {
 			Book book = new Book();
 			book.setBookno(rs.getInt("bookno"));
 			book.setBookname(rs.getString("bookname"));
 			book.setBookprice(rs.getFloat("bookprice"));
+			book.setBooknumber(rs.getInt("booknumber"));
 			books.put(book.getBookno(), book);
-			
+			money = money + book.getBookprice() * book.getBooknumber();
 		}
+		session.setAttribute("money",money);
 		
 		return books;//记得放入session中
 	}
 
+	public static void addEmptyGoods(int cartid) throws Exception{
+		
+		Connection con = DBUtil.getConnection();
+		String sql = " INSERT INTO goods " + " ( bookno , cartid , bookname , booknumber , bookprice ) "
+				+ "VALUES(?,?,?,?,?)";
+		PreparedStatement psm = con.prepareStatement(sql);
+		psm.setInt(1, 0);
+	}
+	
 }

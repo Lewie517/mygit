@@ -3,6 +3,7 @@ package action;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -35,16 +36,24 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User>{
 		}
 		UserDao.addUser(user);
 		//Ìí¼Ócartid
-		PreparedStatement psm1 = con.prepareStatement(" SELECT id FROM user WHERE username=? ");
-		psm1.setString(1, user.getUsername());
-		ResultSet rs1 = psm1.executeQuery();
-		int userid = rs1.getInt(1);
-		CartDao.addCart(userid);
+		addCartId();
 		return SUCCESS;
 		
 		
 	}
 	
-	
+	public void addCartId() throws Exception{
+		
+		Connection con = DBUtil.getConnection();
+		String sql = " SELECT * FROM user WHERE username=? ";
+		PreparedStatement psm1 = con.prepareStatement(sql);
+		psm1.setString(1, user.getUsername());
+		ResultSet rs1 = psm1.executeQuery();
+		int userid;
+		while(rs1.next()){
+			userid = rs1.getInt("id");
+			CartDao.addCart(userid);
+		}
+	}
 	
 }
