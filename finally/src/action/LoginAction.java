@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,9 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import dao.CartDao;
+import dao.GoodsDao;
+import vo.Book;
 import vo.User;
 
 public class LoginAction extends ActionSupport implements ModelDriven<User>{
@@ -44,6 +48,10 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>{
 					{
 						HttpSession session = request.getSession();
 						session.setAttribute("username", user.getUsername());
+						//取出books放入session中//取出userid对应的cartid
+						int cartid = CartDao.queryCartId(user.getId());
+						HashMap<Integer, Book> books = GoodsDao.queryGoods(cartid);
+						session.setAttribute("books", books);
 						return SUCCESS;
 					}
 					else
