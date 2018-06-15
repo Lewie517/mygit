@@ -24,34 +24,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body >
   	<form action="">
-      <table width="80%" align="center" border="1">
+      <table width="90%" align="center" border="1">
       	<tr>
-      		<td><h2 align="left">留言板</h2>
+      		<td colspan="7"><h2 align="center">留言板</h2>
       		</td>
-      		<td colspan="5"></td>
-      		<td>liuyan</td>
       	</tr>
       	<tr>
-      		<td>留言板</td>
-      		<td>留言板</td>
-      		<td>留言板</td>
-      		<td>留言板</td>
-      		<td>留言板</td>
-      		<td>留言板</td>
-      		<td>liuyan</td>
+      		<td colspan="6">当前有<% %>条留言。</td>
+      		<td width="10%" align="center"><a href="givemessage.jsp">留言</a></td>
+      	</tr>
+      	<tr>
+      		<td align="center" colspan="0" width="20%">user:</td>
+      		<td colspan="5" >留言内容</td>
      	</tr>
      	<tr>
-      		<td>留言板</td>
-      		<td>留言板</td>
-      		<td>留言板</td>
-      		<td>留言板</td>
-      		<td>留言板</td>
-      		<td>留言板</td>
-      		<td>liuyan</td>
+      		<td align="center">user:</td>
+      		<td colspan="5">留言内容</td>
       	</tr>
       	<tr>
       		<td align="center">user:</td>
-      		<td colspan="5">asdasdasdas1d2a23d1a23sd1a23s1d32as1d23a1d32a1s23da13</td>
+      		<td colspan="5">内容</td>
       	</tr>
       </table>
     </form>
