@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
@@ -28,5 +29,26 @@ public class BookDao {
 		// con.close();
 		return books;
 	}
-
+	
+	public static void addBook(Book b) throws Exception{
+		
+		con = DBUtil.getConnection();
+		String sql = " INSERT INTO book " + " ( BOOKNAME , BOOKPRICE ) "
+				+ "VALUES(?,?)";
+		PreparedStatement psm = con.prepareStatement(sql);
+		psm.setString(1, b.getBookname());
+		psm.setFloat(2, b.getBookprice());
+		psm.execute(sql);
+	}
+	
+	public static void deleteBook(String bookname) throws Exception{
+		
+		con = DBUtil.getConnection();
+		String sql = " DELETE FROM book " + " WHERE bookname=? ";
+		PreparedStatement psm = con.prepareStatement(sql);
+		psm.setString(1, bookname);
+		psm.execute();
+		
+	}
+	
 }

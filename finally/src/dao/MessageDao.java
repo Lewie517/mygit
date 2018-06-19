@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import vo.Message;
@@ -33,6 +34,24 @@ public class MessageDao {
 			m.setUsername(rs.getString("username"));
 			m.setMessage(rs.getString("message"));
 			allMessage.put(m.getId(), m);
+		}
+		
+		return allMessage;
+	}
+	
+	public static ArrayList<Message> queryMessage1() throws Exception{
+		
+		ArrayList<Message> allMessage = new ArrayList<Message>();
+		Connection con = DBUtil.getConnection();
+		String sql = " SELECT * FROM message ";
+		PreparedStatement psm = con.prepareStatement(sql);
+		ResultSet rs = psm.executeQuery();
+		while(rs.next()){
+			Message m = new Message();
+			m.setId(rs.getInt("id"));
+			m.setUsername(rs.getString("username"));
+			m.setMessage(rs.getString("message"));
+			allMessage.add(m);
 		}
 		
 		return allMessage;

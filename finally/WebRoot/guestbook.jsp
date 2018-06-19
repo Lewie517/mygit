@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" import="java.util.*,dao.*,vo.Message" contentType="text/html; charset=UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -22,29 +22,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body >
-  	<form action="">
+  <body bgcolor="#87CEFF">
+  	<form>
       <table width="90%" align="center" border="1">
       	<tr>
       		<td colspan="7"><h2 align="center">留言板</h2>
       		</td>
       	</tr>
+      	<%
+      		ArrayList<Message> allmessage = MessageDao.queryMessage1();
+      	%>
       	<tr>
-      		<td colspan="6">当前有<% %>条留言。</td>
+      		<td colspan="6">当前有<%=allmessage.size() %>条留言。</td>
       		<td width="10%" align="center"><a href="givemessage.jsp">留言</a></td>
       	</tr>
+      	<% 
+      		Message temp;
+      		for(int i=0;i<allmessage.size();i++){
+      			temp = allmessage.get(i);
+      			
+      	%>
       	<tr>
-      		<td align="center" colspan="0" width="20%">user:</td>
-      		<td colspan="5" >留言内容</td>
+      		<td align="center" colspan="0" width="20%"><%=temp.getUsername() %></td>
+      		<td colspan="5" ><%=temp.getMessage() %></td>
+      		<td align="center">第<%=i+1 %>楼</td>
      	</tr>
-     	<tr>
-      		<td align="center">user:</td>
-      		<td colspan="5">留言内容</td>
-      	</tr>
-      	<tr>
-      		<td align="center">user:</td>
-      		<td colspan="5">内容</td>
-      	</tr>
+     	<%} %>
+     	<tr><td colspan="7" align="center"><a href="showAllBook.jsp">返回购书</a></td></tr>
       </table>
     </form>
   </body>

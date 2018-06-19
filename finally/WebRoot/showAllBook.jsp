@@ -52,5 +52,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </table>
       <div align="center"><a href="showCart.jsp" >查看购物车</a></div> 
       <div align="center"><a href="logout.action" >注销</a></div> 
+      <div align="center"><a href="guestbook.jsp" >留言板</a></div>
   </body>
 </html>

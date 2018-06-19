@@ -32,5 +32,12 @@
 			<result>/regsuccess.jsp</result>
 			<result name="error">/regerror.jsp</result>
 		</action>
+		<action name="message" method="execute" class="action.MessageAction">
+			<result>/guestbook.jsp</result>
+		</action>
+		<action name="root" method="execute" class="action.RootAction">
+			<result>/backsystem.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 	</package>
 </struts>    

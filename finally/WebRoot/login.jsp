@@ -39,14 +39,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<input type="password" name="password" placeholder="密码" value="" style="width:100%;" required="required"><br>
 					<hr>
 					<input class="checkcode" type="text" name="checkcode"> 
-					
 					<img alt="验证码" id="code" src="code.action">
 					<a href="javascript:reLoadCode();">看不清楚</a><br>
 				</p>
 				<p>
 				<hr>
 					<input type="submit" value="登录" class="login"><br>
-					<a href="register.jsp">注册</a>
+					<a href="register.jsp">注册</a><br>
+					<a href="rootlogin.jsp">管理员登录</a>
 				</p>
 			</form>
 		</div>
