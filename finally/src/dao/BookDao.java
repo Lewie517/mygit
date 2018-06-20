@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import vo.Book;
@@ -38,17 +39,34 @@ public class BookDao {
 		PreparedStatement psm = con.prepareStatement(sql);
 		psm.setString(1, b.getBookname());
 		psm.setFloat(2, b.getBookprice());
-		psm.execute(sql);
+		psm.execute();
 	}
 	
-	public static void deleteBook(String bookname) throws Exception{
+	public static void deleteBook(int bookno) throws Exception{
 		
 		con = DBUtil.getConnection();
-		String sql = " DELETE FROM book " + " WHERE bookname=? ";
+		String sql = " DELETE FROM book " + " WHERE BOOKNO=? ";
 		PreparedStatement psm = con.prepareStatement(sql);
-		psm.setString(1, bookname);
+		psm.setInt(1, bookno);
 		psm.execute();
 		
+	}
+	
+	public static ArrayList<Book> queryBook() throws Exception{
+		
+		ArrayList<Book> books = new ArrayList<Book>();
+		con = DBUtil.getConnection();
+		String sql = " SELECT BOOKNO,BOOKNAME,BOOKPRICE FROM book ";
+		Statement psm = con.createStatement();
+		ResultSet rs = psm.executeQuery(sql);
+		while (rs.next()) {
+			Book book = new Book();
+			book.setBookno(rs.getInt("bookno"));
+			book.setBookname(rs.getString("bookname"));
+			book.setBookprice(rs.getFloat("bookprice"));
+			books.add(book);
+		}
+		return books;
 	}
 	
 }

@@ -42,5 +42,11 @@
 		<action name="removeuser" method="execute" class="action.RemoveUserAction">
 			<result>/usermanage.jsp</result>
 		</action>
+		<action name="removebook" method="execute" class="action.RemoveBookAction">
+			<result>/bookmanage.jsp</result>
+		</action>
+		<action name="addbook" method="execute" class="action.AddBook">
+			<result>/bookmanage.jsp</result>
+		</action>
 	</package>
 </struts>    

@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body>
+  <body bgcolor="#87CEFF">
       <form action="message.action" method="post">
       	<table align="center" width="50%">
       		<tr>

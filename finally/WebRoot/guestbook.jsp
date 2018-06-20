@@ -25,14 +25,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body bgcolor="#87CEFF">
   	<form>
       <table width="90%" align="center" border="1">
-      	<tr>
+      	<tr bgcolor="pink">
       		<td colspan="7"><h2 align="center">留言板</h2>
       		</td>
       	</tr>
       	<%
       		ArrayList<Message> allmessage = MessageDao.queryMessage1();
       	%>
-      	<tr>
+      	<tr bgcolor="pink">
       		<td colspan="6">当前有<%=allmessage.size() %>条留言。</td>
       		<td width="10%" align="center"><a href="givemessage.jsp">留言</a></td>
       	</tr>
@@ -42,13 +42,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       			temp = allmessage.get(i);
       			
       	%>
-      	<tr>
+      	<tr bgcolor="yellow">
       		<td align="center" colspan="0" width="20%"><%=temp.getUsername() %></td>
       		<td colspan="5" ><%=temp.getMessage() %></td>
       		<td align="center">第<%=i+1 %>楼</td>
      	</tr>
      	<%} %>
-     	<tr><td colspan="7" align="center"><a href="showAllBook.jsp">返回购书</a></td></tr>
+     	<tr><td colspan="7" align="center"><a href="showAllBook.jsp"><strong>返回购书</strong></a></td></tr>
       </table>
     </form>
   </body>

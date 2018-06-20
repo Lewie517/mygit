@@ -24,27 +24,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <form>
-    	<table border="1" width="100%">	
+    	<table border="1" width="80%" align="center">	
       	<tr>
-      		<td colspan="4" align="center">用户管理</td>
+      		<td colspan="4" align="center">书籍管理</td>
+      	</tr>
+      	<tr>
+      		<td colspan="4" align="right"><a href="addBooks.jsp">新增书籍</a></td>
       	</tr>
 		<tr>
-			<td align="center">书号</td>
-			<td align="center">书名</td>
-			<td align="center">书价</td>
-			<td align="center">删除用户</td>
+			<td align="center">书    号</td>
+			<td align="center">书    名</td>
+			<td align="center">书    价</td>
+			<td align="center">删除书本</td>
 		</tr>	
 		<%
-			ArrayList<User> users = UserDao.queryAllUser();
-			User user ;
-			for(int i = 0 ;i < users.size();i++){
-				user = users.get(i);
+			ArrayList<Book> books = BookDao.queryBook();
+			Book book ;
+			for(int i = 0 ;i < books.size();i++){
+				book = books.get(i);
 		 %>
 		 <tr>
-		 	<td align="center"><%=user.getId() %></td>
-		 	<td align="center"><%=user.getUsername() %></td>
-		 	<td align="center"><%=user.getAddress() %></td>
-		 	<td align="center"><a href="removeuser.action?userid=<%=user.getId() %>">删除</a></td>
+		 	<td align="center"><%=book.getBookno() %></td>
+		 	<td align="center"><%=book.getBookname() %></td>
+		 	<td align="center"><%=book.getBookprice() %></td>
+		 	<td align="center"><a href="removebook.action?bookno=<%=book.getBookno() %>">删除</a></td>
 		 </tr>
 		 <%} %>
       	</table>
