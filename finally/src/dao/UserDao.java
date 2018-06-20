@@ -2,6 +2,8 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import vo.User;
 
@@ -49,5 +51,23 @@ public class UserDao {
 		psm.execute();
 		System.out.println("修改成功");
 		
+	}
+	
+	public static ArrayList<User> queryAllUser() throws Exception {// 获取cartid元素
+		Connection con = DBUtil.getConnection();
+		String sql = " SELECT * FROM user  ";
+		PreparedStatement psm = con.prepareStatement(sql);
+		ResultSet rs = psm.executeQuery();
+		ArrayList<User> users = new ArrayList<User>();
+		while(rs.next()){
+			User user = new User();
+			user.setId(rs.getInt("id"));
+			user.setUsername(rs.getString("username"));
+			user.setPassword(rs.getString("password"));
+			user.setAddress(rs.getString("address"));
+			user.setPhone(rs.getString("phone"));
+			users.add(user);
+		}
+		return users;
 	}
 }

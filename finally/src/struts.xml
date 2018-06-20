@@ -36,8 +36,11 @@
 			<result>/guestbook.jsp</result>
 		</action>
 		<action name="root" method="execute" class="action.RootAction">
-			<result>/backsystem.jsp</result>
+			<result>/framework.jsp</result>
 			<result name="error">/error.jsp</result>
+		</action>
+		<action name="removeuser" method="execute" class="action.RemoveUserAction">
+			<result>/usermanage.jsp</result>
 		</action>
 	</package>
 </struts>    

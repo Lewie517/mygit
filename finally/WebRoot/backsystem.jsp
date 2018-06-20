@@ -49,8 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <form>
       <div align="center" style="margin: 0 auto;">
       	<ul style="width: 60%;">
-			<!--  <li><a href="#" target="2">首页</a></li> -->
-			<li><a href="#" target="2">用户管理</a></li>
+			<li><a href="usermanage.jsp" target="2">用户管理</a></li>
 			<li><a href="#" target="2">书本管理</a></li>		
 			<li><a href="login.jsp" target="_top">退出</a></li>
 		</ul>
