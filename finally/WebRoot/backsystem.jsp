@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			width:100px;
 			text-decoration:none;			
 			color:#FFFFFF;	
-			background-color:#0000FF;
+			background-color:purple;
 			border-right:1px solid #FFFFFF;
 					
 		}
@@ -47,14 +47,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
       <form>
-      	<ul>
-			<li><a href="#" target="2">首页</a></li>
+      <div align="center" style="margin: 0 auto;">
+      	<ul style="width: 60%;">
+			<!--  <li><a href="#" target="2">首页</a></li> -->
 			<li><a href="#" target="2">用户管理</a></li>
-			<li><a href="showCart.jsp" target="2">购物车</a></li>
 			<li><a href="#" target="2">书本管理</a></li>		
 			<li><a href="login.jsp" target="_top">退出</a></li>
 		</ul>
-      		
+      </div>
       		
       </form>
   </body>
