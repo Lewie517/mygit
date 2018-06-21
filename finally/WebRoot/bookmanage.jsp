@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 <tr>
 		 	<td align="center"><%=book.getBookno() %></td>
 		 	<td align="center"><%=book.getBookname() %></td>
-		 	<td align="center"><%=book.getBookprice() %></td>
+		 	<td align="center"><%=book.getBookprice() %>元</td>
 		 	<td align="center"><a href="removebook.action?bookno=<%=book.getBookno() %>">删除</a></td>
 		 </tr>
 		 <%} %>

@@ -16,6 +16,8 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class codeAction extends ActionSupport {
+
+	private static final long serialVersionUID = 1L;
 	private ByteArrayInputStream inputStream;
 
 	public ByteArrayInputStream getInputStream() {

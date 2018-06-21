@@ -42,13 +42,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			color:gray;
 			background-color:yellow;
 		}
+		div{
+		 	width:400px;
+			height:20px;
+			margin:  0 auto;
+		}
 	</style>
   </head>
   
   <body>
       <form>
       <div align="center" style="margin: 0 auto;">
-      	<ul style="width: 60%;">
+      	<ul >
 			<li><a href="usermanage.jsp" target="2">用户管理</a></li>
 			<li><a href="bookmanage.jsp" target="2">书本管理</a></li>		
 			<li><a href="login.jsp" target="_top">退出</a></li>

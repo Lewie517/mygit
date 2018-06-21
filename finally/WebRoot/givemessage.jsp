@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       			<td align="center">输入留言信息：</td>
       		</tr>
       		<tr >
-      			<td align="center" width="50%"><input type="text" name="message" ></td>
+      			<td align="center" width="50%"><textarea rows="10" cols="20" name="message"></textarea></td>
       		</tr>
       		<tr>
       			<td align="center"><input type="submit" value="提交"></td>
